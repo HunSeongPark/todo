@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:elevation="15dp"
+        android:background="@drawable/item_rounded_gray"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/circle_white" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="15dp"
+                android:src="@drawable/ic_check"
+                android:visibility="gone"
+                android:id="@+id/checkImage"
+                />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/taskTextView"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            tools:text ="거북이 알까기"
+            android:layout_marginStart="30dp"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,18 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_gravity="center"
+    android:background="#fff"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".view.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/taskEditText"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="65dp"
+            android:background="@drawable/edit_rounded_gray"
+            android:gravity="center_vertical"
+            android:hint="@string/request_task"
+            android:enabled="false"
+            android:paddingStart="30dp"
+            android:textColorHint="#7C7C7C"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.15" />
+
+        <ImageView
+            android:id="@+id/addButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_add"
+            app:layout_constraintBottom_toBottomOf="@id/taskEditText"
+            app:layout_constraintEnd_toEndOf="@id/taskEditText"
+            app:layout_constraintTop_toTopOf="@id/taskEditText" />
+
+        <com.ernestoyaquello.dragdropswiperecyclerview.DragDropSwipeRecyclerView
+            android:id="@+id/taskRecyclerView"
+            android:layout_width="0dp"
+            android:fadingEdge="horizontal"
+            android:fadingEdgeLength="20dp"
+            android:fillViewport="false"
+            android:requiresFadingEdge="vertical"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="65dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="70dp"
+            app:layout_constraintBottom_toTopOf="@id/completeRatingTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/taskEditText"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/item_task"
+            />
+
+        <TextView
+            android:id="@+id/completeRatingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="70dp"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/taskRecyclerView"
+            tools:text="달성률 50.3%" />
+
+        <TextView
+            android:id="@+id/completeTaskDeleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="달성한 일 삭제"
+            android:textColor="#939393"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@id/completeRatingTextView"
+            app:layout_constraintEnd_toEndOf="@id/taskRecyclerView"
+            app:layout_constraintTop_toTopOf="@id/completeRatingTextView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/popupBackgroundView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/informationLayout"
+        android:layout_width="280dp"
+        android:layout_height="380dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/popup_alpha_black_bg">
+
+        <TextView
+            android:id="@+id/leftSwipeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:text="@string/left_swipe_to_delete"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@id/leftSwipeImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <ImageView
+            android:id="@+id/leftSwipeImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:src="@drawable/ic_left_swipe"
+            app:layout_constraintBottom_toTopOf="@id/rightSwipeTextView"
+            app:layout_constraintStart_toStartOf="@id/leftSwipeTextView"
+            app:layout_constraintTop_toBottomOf="@id/leftSwipeTextView" />
+
+        <TextView
+            android:id="@+id/rightSwipeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:text="@string/right_swipe_to_modify"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+
+            app:layout_constraintBottom_toTopOf="@id/rightSwipeImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/leftSwipeImageView" />
+
+        <ImageView
+            android:id="@+id/rightSwipeImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_right_swipe"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/rightSwipeTextView"
+            app:layout_constraintTop_toBottomOf="@id/rightSwipeTextView" />
+
+        <ImageView
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
