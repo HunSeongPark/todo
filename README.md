@@ -20,21 +20,21 @@ MVVM
 ![final-architecture](https://user-images.githubusercontent.com/71416677/132950781-3b8c1373-825b-4685-a900-de84f4e5f062.png)  
 
 # Details
-* `add`
+* `add`    
 EditText and add button
 
-* `complete`
+* `complete`  
 Click task
 
-* `remove`
-Single task  (Swipe Left)
-Completed task
-All task
+* `remove`  
+Single task  (Swipe Left)  
+Completed task  
+All task  
 
-* `modify`
+* `modify`  
 Swipe Right
 
-* `keep task`
+* `keep task`  
 Using Room (Local Database), all tasks keep until delete the app.
 
 
