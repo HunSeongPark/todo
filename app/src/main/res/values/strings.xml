@@ -1,13 +1,12 @@
 <resources>
     <string name="app_name">todo-mvvm</string>
-    <string name="request_task">할 일을 등록하세요</string>
+    <string name="request_task">Add task</string>
     <string name="left_swipe_to_delete">Left swipe to delete</string>
     <string name="right_swipe_to_modify">Right swipe to modify</string>
 
-    <string name="error_message">오류가 발생했습니다. Error: %s</string>
-    <string name="initial_complete_rating">달성률 : 0.0%</string>
-    <string name="delete_button">달성한 일 삭제</string>
-    <string name="delete_all">모두 삭제</string>
-
-    <string name="completed_result">달성률 : %s</string>
+    <string name="error_message">An error has occurred. : %s</string>
+    <string name="initial_complete_rating">Completed : 0.0%</string>
+    <string name="delete_button">Remove Completed</string>
+    <string name="delete_all">Remove All</string>
+    <string name="task_is_empty">Task is Empty!</string>
 </resources>

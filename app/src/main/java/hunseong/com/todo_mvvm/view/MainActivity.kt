@@ -19,7 +19,6 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ernestoyaquello.dragdropswiperecyclerview.DragDropSwipeRecyclerView
 import hunseong.com.todo_mvvm.R
 import hunseong.com.todo_mvvm.adapter.TaskAdapter
 import hunseong.com.todo_mvvm.data.entity.TaskEntity
@@ -147,14 +146,14 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
             val allTasksSize = state.tasks.size.toFloat()
             val completedTaskSize = state.tasks.filter { it.isCompleted }.size.toFloat()
             val completedPercent = completedTaskSize / allTasksSize * 100f
-            val result = "달성률 : %.1f".format(completedPercent) + "%"
+            val result = "Completed : %.1f".format(completedPercent) + "%"
             completeRatingTextView.text = result
         }
 
     }
 
     private fun handleEmptyCompletedTask() {
-        Toast.makeText(this, "완료 된 일이 없습니다!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "No tasks completed!", Toast.LENGTH_SHORT).show()
     }
 
     private fun handleErrorState(state: TaskState.Error) = with(binding) {
@@ -170,11 +169,11 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         val editText: EditText = view.findViewById(R.id.modifyEditText)
         editText.setText(taskEntity.title)
         val dialog = AlertDialog.Builder(this)
-            .setTitle("할 일 수정")
+            .setTitle("Modify Task")
             .setView(view)
-            .setPositiveButton("수정") { _, _ ->
+            .setPositiveButton("Modify") { _, _ ->
                 if (editText.text.isNullOrBlank()) {
-                    Toast.makeText(this, "할 일을 입력해주세요!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Please Edit Your Task.", Toast.LENGTH_SHORT).show()
                     viewModel.fetchTasks()
                 } else {
                     viewModel.updateTask(taskEntity.copy(
@@ -182,7 +181,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                     ))
                 }
             }
-            .setNegativeButton("취소") { _, _ -> viewModel.fetchTasks() }
+            .setNegativeButton("Cancel") { _, _ -> viewModel.fetchTasks() }
             .create()
 
         dialog.setOnShowListener { _ ->

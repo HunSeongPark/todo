@@ -40,8 +40,7 @@
             android:layout_marginStart="30dp"
             android:maxLength="20"
             android:textColor="@color/black"
-            android:textSize="17sp"
-            tools:text="거북이 알까기기기기기기기ㅣ기긱기기기기" />
+            android:textSize="17sp"/>
 
 
     </LinearLayout>

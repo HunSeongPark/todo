@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="등록된 할 일이 없습니다.\n새로운 일정을 짜보세요!"
+        android:text="@string/task_is_empty"
         android:visibility="gone" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,11 +79,10 @@
             android:id="@+id/completeRatingTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginBottom="70dp"
             android:text="@string/initial_complete_rating"
             android:textColor="@color/black"
-            android:textSize="17sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@id/completeTaskDeleteButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -92,10 +91,11 @@
             android:id="@+id/completeTaskDeleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/completeRatingTextView"
+            app:layout_constraintEnd_toStartOf="@id/deleteAllButton"
             android:text="@string/delete_button"
             android:textColor="#939393"
-            android:textSize="17sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@id/completeRatingTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/completeRatingTextView" />
@@ -105,22 +105,24 @@
             android:layout_height="wrap_content"
             android:text="@string/delete_all"
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="17sp"
+            android:textSize="14sp"
             android:id="@+id/deleteAllButton"
             app:layout_constraintStart_toEndOf="@id/completeTaskDeleteButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/completeTaskDeleteButton"
             app:layout_constraintBottom_toBottomOf="@id/completeTaskDeleteButton"
             />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:id="@+id/popupBackgroundView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@null"
-        android:clickable="true"
-        android:focusable="true" />
+        <View
+            android:id="@+id/popupBackgroundView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:clickable="true"
+            android:focusable="true"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="1dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/informationLayout"
