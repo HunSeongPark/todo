@@ -1,7 +1,7 @@
 # kotlin-todo-MVVM
 kotlin todo app using MVVM pattern.
 
-----------------`add`---------------- `complete` ---------------- `modify` ----------------    
+--------------------- `add` --------------------- `complete` --------------------- `modify` ---------------------    
 <img src="https://user-images.githubusercontent.com/71416677/132951673-93ffef6f-4572-486b-9026-38565aba6a39.gif" width="250" height="400"/>
 <img src="https://user-images.githubusercontent.com/71416677/132951700-502da9a8-b4b1-4270-9a4b-31c87a7be12a.gif" width="250" height="400"/>
 <img src="https://user-images.githubusercontent.com/71416677/132951687-67ca9d63-3a2d-4ff8-bc56-cf5a2f7df270.gif" width="250" height="400"/>  
