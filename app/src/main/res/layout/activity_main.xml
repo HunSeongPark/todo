@@ -7,8 +7,20 @@
     android:layout_gravity="center"
     android:background="#fff"
     android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:id="@+id/mainLayout"
     android:orientation="vertical"
     tools:context=".view.MainActivity">
+
+    <TextView
+        android:id="@+id/emptyTaskTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="등록된 할 일이 없습니다.\n새로운 일정을 짜보세요!"
+        android:visibility="gone" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,9 +33,9 @@
             android:layout_height="50dp"
             android:layout_marginHorizontal="65dp"
             android:background="@drawable/edit_rounded_gray"
+            android:enabled="false"
             android:gravity="center_vertical"
             android:hint="@string/request_task"
-            android:enabled="false"
             android:paddingStart="30dp"
             android:textColorHint="#7C7C7C"
             android:textSize="20sp"
@@ -44,24 +56,24 @@
             app:layout_constraintEnd_toEndOf="@id/taskEditText"
             app:layout_constraintTop_toTopOf="@id/taskEditText" />
 
-        <com.ernestoyaquello.dragdropswiperecyclerview.DragDropSwipeRecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/taskRecyclerView"
             android:layout_width="0dp"
-            android:fadingEdge="horizontal"
-            android:fadingEdgeLength="20dp"
-            android:fillViewport="false"
-            android:requiresFadingEdge="vertical"
             android:layout_height="0dp"
             android:layout_marginHorizontal="65dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="70dp"
+            android:fadingEdge="horizontal"
+            android:fadingEdgeLength="20dp"
+            android:fillViewport="false"
+            android:overScrollMode="never"
+            android:requiresFadingEdge="vertical"
             app:layout_constraintBottom_toTopOf="@id/completeRatingTextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/taskEditText"
             app:layout_constraintVertical_bias="0.0"
-            tools:listitem="@layout/item_task"
-            />
+            tools:listitem="@layout/item_task" />
 
         <TextView
             android:id="@+id/completeRatingTextView"
@@ -69,23 +81,37 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="70dp"
+            android:text="@string/initial_complete_rating"
             android:textColor="@color/black"
             android:textSize="17sp"
+            app:layout_constraintEnd_toStartOf="@id/completeTaskDeleteButton"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/taskRecyclerView"
-            tools:text="달성률 50.3%" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/completeTaskDeleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="달성한 일 삭제"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/delete_button"
             android:textColor="#939393"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="@id/completeRatingTextView"
-            app:layout_constraintEnd_toEndOf="@id/taskRecyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/completeRatingTextView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_all"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="17sp"
+            android:id="@+id/deleteAllButton"
+            app:layout_constraintStart_toEndOf="@id/completeTaskDeleteButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/completeTaskDeleteButton"
+            app:layout_constraintBottom_toBottomOf="@id/completeTaskDeleteButton"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -162,5 +188,13 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="#737373"
+        android:visibility="gone" />
 
 </FrameLayout>

@@ -14,15 +14,16 @@ abstract class BaseActivity<VM: BaseViewModel, VB: ViewBinding> : AppCompatActiv
 
     abstract fun getViewBinding(): VB
 
-    private lateinit var fetchJob: Job
+    protected lateinit var fetchJob: Job
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = getViewBinding()
         setContentView(binding.root)
-
-        fetchJob = viewModel.fetchTasks()
+        observeData()
+        initViews()
+        bindView()
     }
 
     abstract fun initViews()

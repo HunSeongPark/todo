@@ -8,10 +8,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="85dp"
-        android:elevation="15dp"
-        android:background="@drawable/item_rounded_gray"
-        android:gravity="center_vertical"
         android:layout_marginBottom="20dp"
+        android:background="@drawable/item_rounded_gray"
+        android:elevation="15dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <FrameLayout
@@ -25,24 +25,24 @@
                 android:background="@drawable/circle_white" />
 
             <ImageView
+                android:id="@+id/checkImage"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="15dp"
                 android:src="@drawable/ic_check"
-                android:visibility="gone"
-                android:id="@+id/checkImage"
-                />
+                android:alpha="0" />
         </FrameLayout>
 
         <TextView
+            android:id="@+id/taskTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/taskTextView"
-            android:textSize="17sp"
-            android:textColor="@color/black"
-            tools:text ="거북이 알까기"
             android:layout_marginStart="30dp"
-            />
+            android:maxLength="20"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            tools:text="거북이 알까기기기기기기기ㅣ기긱기기기기" />
+
 
     </LinearLayout>
 
