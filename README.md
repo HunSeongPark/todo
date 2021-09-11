@@ -2,15 +2,15 @@
 kotlin todo app using MVVM pattern.
 
 `add`---- `complete` ---- `modify`
-![add](https://user-images.githubusercontent.com/71416677/132951673-93ffef6f-4572-486b-9026-38565aba6a39.gif)
-![complete](https://user-images.githubusercontent.com/71416677/132951700-502da9a8-b4b1-4270-9a4b-31c87a7be12a.gif)
-![modify](https://user-images.githubusercontent.com/71416677/132951687-67ca9d63-3a2d-4ff8-bc56-cf5a2f7df270.gif)
+![add](https://user-images.githubusercontent.com/71416677/132951673-93ffef6f-4572-486b-9026-38565aba6a39.gif){: width="100", height= "200"}
+![complete](https://user-images.githubusercontent.com/71416677/132951700-502da9a8-b4b1-4270-9a4b-31c87a7be12a.gif){: width="100", height= "200"}
+![modify](https://user-images.githubusercontent.com/71416677/132951687-67ca9d63-3a2d-4ff8-bc56-cf5a2f7df270.gif){: width="100", height= "200"}
 
 
 `remove single` ---- `remove completed` ---- `remove all`
-![remove single](https://user-images.githubusercontent.com/71416677/132951712-ce404bd5-e908-4576-9fd5-cb99bd4ad070.gif)
-![remove complete](https://user-images.githubusercontent.com/71416677/132951721-588188f2-55ff-49c9-9a70-3cb49dc608b9.gif)
-![remove all](https://user-images.githubusercontent.com/71416677/132951728-d6b23015-1362-40eb-b039-f774d5210733.gif)
+![remove single](https://user-images.githubusercontent.com/71416677/132951712-ce404bd5-e908-4576-9fd5-cb99bd4ad070.gif){: width="100", height= "200"}
+![remove complete](https://user-images.githubusercontent.com/71416677/132951721-588188f2-55ff-49c9-9a70-3cb49dc608b9.gif){: width="100", height= "200"}
+![remove all](https://user-images.githubusercontent.com/71416677/132951728-d6b23015-1362-40eb-b039-f774d5210733.gif){: width="100", height= "200"}
 
 # Details
 * `add`
