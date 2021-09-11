@@ -14,28 +14,28 @@ kotlin todo app using MVVM pattern.
 <img src="https://user-images.githubusercontent.com/71416677/132951721-588188f2-55ff-49c9-9a70-3cb49dc608b9.gif" width="250" height="400"/>
 <img src="https://user-images.githubusercontent.com/71416677/132951728-d6b23015-1362-40eb-b039-f774d5210733.gif" width="250" height="400"/>  
 
-# Details
-* `add`
--  EditText and add button
-
-* `complete`
--  Click task
-
-* `remove`
--  Single task  (Swipe Left)
--  Completed task
--  All task
-
-* `modify`
--  Swipe Right
-
-* `keep task`
--  Using Room (Local Database), all tasks keep until delete the app.
-
 ## Architecture Pattern
 MVVM 
 
-![final-architecture](https://user-images.githubusercontent.com/71416677/132950781-3b8c1373-825b-4685-a900-de84f4e5f062.png)
+![final-architecture](https://user-images.githubusercontent.com/71416677/132950781-3b8c1373-825b-4685-a900-de84f4e5f062.png)  
+
+# Details
+* `add`
+EditText and add button
+
+* `complete`
+Click task
+
+* `remove`
+Single task  (Swipe Left)
+Completed task
+All task
+
+* `modify`
+Swipe Right
+
+* `keep task`
+Using Room (Local Database), all tasks keep until delete the app.
 
 
 ## Used Libraries
