@@ -41,17 +41,29 @@ class MainViewModel(
         fetchTasks()
     }
 
+    fun deleteTask(id: Long) = viewModelScope.launch {
+        taskRepository.delete(id)
+        fetchTasks()
+    }
+
     fun deleteAllTasks() = viewModelScope.launch {
         taskRepository.deleteAll()
         fetchTasks()
     }
 
-    fun setState(state: TaskState) {
-        _taskLiveData.value = state
-    }
-
     fun updateTask(taskEntity: TaskEntity) = viewModelScope.launch {
         taskRepository.update(taskEntity)
         fetchTasks()
+    }
+
+    fun deleteCompleteTasks() = viewModelScope.launch {
+        val completedTasks = taskRepository.getAllTasks()
+            .filter { it.isCompleted }
+        if(completedTasks.isNullOrEmpty()) {
+            _taskLiveData.value = TaskState.EmptyCompletedTask
+        } else {
+            completedTasks.map { taskRepository.delete(it.id) }
+            fetchTasks()
+        }
     }
 }

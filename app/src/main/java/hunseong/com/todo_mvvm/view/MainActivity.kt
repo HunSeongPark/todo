@@ -2,11 +2,21 @@ package hunseong.com.todo_mvvm.view
 
 import android.animation.Animator
 import android.app.Activity
+import android.app.AlertDialog
+import android.app.DirectAction
+import android.content.DialogInterface
+import android.graphics.*
+import android.graphics.drawable.Drawable
+import android.icu.text.RelativeDateTimeFormatter
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ernestoyaquello.dragdropswiperecyclerview.DragDropSwipeRecyclerView
@@ -30,9 +40,37 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
     private lateinit var adapter: TaskAdapter
 
+    private val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.START,
+        ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder,
+        ): Boolean = false
+
+        override fun isLongPressDragEnabled(): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            if (direction == ItemTouchHelper.LEFT) adapter.removeTask(viewHolder.layoutPosition)
+            else {
+                showModifyDialog(adapter.tasks[viewHolder.layoutPosition])
+            }
+        }
+    }
+
 
     override fun initViews() = with(binding) {
-
+        ItemTouchHelper(itemTouchCallback).attachToRecyclerView(taskRecyclerView)
+        adapter = TaskAdapter(viewModel).apply {
+            onClickListener = {
+                viewModel.updateTask(it.copy(isCompleted = !it.isCompleted))
+            }
+        }
+        taskRecyclerView.adapter = adapter
+        taskRecyclerView.layoutManager =
+            LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
     }
 
     override fun bindView() = with(binding) {
@@ -55,7 +93,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
         addButton.setOnClickListener {
             val title = taskEditText.text.toString()
-            if (title.isEmpty()) {
+            if (title.isBlank()) {
                 Toast.makeText(this@MainActivity, "할 일을 입력해주세요!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -70,6 +108,10 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
             hideKeyboard()
         }
 
+        completeTaskDeleteButton.setOnClickListener {
+            viewModel.deleteCompleteTasks()
+        }
+
         deleteAllButton.setOnClickListener {
             viewModel.deleteAllTasks()
         }
@@ -80,6 +122,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
             is TaskState.Uninitialized -> Unit
             is TaskState.Loading -> handleLoadingState()
             is TaskState.Success -> handleSuccessState(it)
+            is TaskState.EmptyCompletedTask -> handleEmptyCompletedTask()
             is TaskState.Error -> handleErrorState(it)
         }
     }
@@ -98,9 +141,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         } else {
             emptyTaskTextView.isGone = true
             taskRecyclerView.isVisible = true
-            if (::adapter.isInitialized.not()) {
-                initRecyclerView(state.tasks)
-            }
+
             (taskRecyclerView.adapter as? TaskAdapter)?.tasks = state.tasks
             taskRecyclerView.adapter?.notifyDataSetChanged()
             val allTasksSize = state.tasks.size.toFloat()
@@ -112,15 +153,8 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
     }
 
-    private fun initRecyclerView(tasks: List<TaskEntity>) = with(binding.taskRecyclerView) {
-        adapter = TaskAdapter().apply {
-            onClickListener = {
-                viewModel.updateTask(it.copy(isCompleted = !it.isCompleted))
-            }
-        }
-
-        adapter = adapter
-        layoutManager = LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
+    private fun handleEmptyCompletedTask() {
+        Toast.makeText(this, "완료 된 일이 없습니다!", Toast.LENGTH_SHORT).show()
     }
 
     private fun handleErrorState(state: TaskState.Error) = with(binding) {
@@ -131,8 +165,38 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
             .show()
     }
 
+    private fun showModifyDialog(taskEntity: TaskEntity) {
+        val view = LayoutInflater.from(this).inflate(R.layout.modify_dialog_edit_text, null)
+        val editText: EditText = view.findViewById(R.id.modifyEditText)
+        editText.setText(taskEntity.title)
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("할 일 수정")
+            .setView(view)
+            .setPositiveButton("수정") { _, _ ->
+                if (editText.text.isNullOrBlank()) {
+                    Toast.makeText(this, "할 일을 입력해주세요!", Toast.LENGTH_SHORT).show()
+                    viewModel.fetchTasks()
+                } else {
+                    viewModel.updateTask(taskEntity.copy(
+                        title = editText.text.toString()
+                    ))
+                }
+            }
+            .setNegativeButton("취소") { _, _ -> viewModel.fetchTasks() }
+            .create()
+
+        dialog.setOnShowListener { _ ->
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getColor(R.color.dark_red))
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getColor(R.color.dark_gray))
+        }
+
+        dialog.show()
+
+    }
+
     private fun hideKeyboard() {
-        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val inputMethodManager =
+            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
     }
 }

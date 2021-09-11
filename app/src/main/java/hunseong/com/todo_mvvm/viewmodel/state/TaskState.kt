@@ -9,6 +9,8 @@ sealed class TaskState {
 
     object Loading: TaskState()
 
+    object EmptyCompletedTask : TaskState()
+
     data class Success(
         val tasks: List<TaskEntity>
     ): TaskState()

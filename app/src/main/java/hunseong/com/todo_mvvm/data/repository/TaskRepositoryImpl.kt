@@ -18,6 +18,10 @@ class TaskRepositoryImpl(
         taskDao.insert(taskEntity)
     }
 
+    override suspend fun delete(id: Long) {
+        taskDao.delete(id)
+    }
+
     override suspend fun deleteAll() {
         taskDao.deleteAll()
     }

@@ -8,6 +8,8 @@ interface TaskRepository {
 
     suspend fun insert(taskEntity: TaskEntity)
 
+    suspend fun delete(id : Long)
+
     suspend fun deleteAll()
 
     suspend fun update(taskEntity: TaskEntity)

@@ -21,9 +21,9 @@ abstract class BaseActivity<VM: BaseViewModel, VB: ViewBinding> : AppCompatActiv
 
         binding = getViewBinding()
         setContentView(binding.root)
-        observeData()
         initViews()
         bindView()
+        observeData()
     }
 
     abstract fun initViews()

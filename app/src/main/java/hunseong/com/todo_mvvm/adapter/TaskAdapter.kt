@@ -2,19 +2,23 @@ package hunseong.com.todo_mvvm.adapter
 
 import android.graphics.Paint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ernestoyaquello.dragdropswiperecyclerview.DragDropSwipeAdapter
-import hunseong.com.todo_mvvm.R
 import hunseong.com.todo_mvvm.data.entity.TaskEntity
 import hunseong.com.todo_mvvm.databinding.ItemTaskBinding
+import hunseong.com.todo_mvvm.viewmodel.MainViewModel
 
-class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+class TaskAdapter(
+    private val viewModel: MainViewModel
+) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     var tasks: List<TaskEntity> = emptyList()
 
     var onClickListener: ((TaskEntity) -> Unit)? = null
+
+    fun removeTask(position: Int) {
+        viewModel.deleteTask(tasks[position].id)
+    }
 
     inner class ViewHolder(private val binding: ItemTaskBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(task: TaskEntity) = with(binding) {
@@ -27,6 +31,10 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
                 checkImage.alpha = 1f
                 binding.root.alpha = 0.5f
                 binding.taskTextView.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            } else {
+                checkImage.alpha = 0f
+                binding.root.alpha = 1f
+                binding.taskTextView.paintFlags = Paint.LINEAR_TEXT_FLAG
             }
         }
     }
