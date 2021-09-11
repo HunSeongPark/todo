@@ -2,7 +2,8 @@
 kotlin todo app using MVVM pattern.
 
 
-
+# Details
+  *add
 
 
 ## Architecture Pattern
