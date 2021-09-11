@@ -93,7 +93,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         addButton.setOnClickListener {
             val title = taskEditText.text.toString()
             if (title.isBlank()) {
-                Toast.makeText(this@MainActivity, "할 일을 입력해주세요!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "Write your task!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             viewModel.insertTask(TaskEntity(
