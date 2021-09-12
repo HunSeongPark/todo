@@ -45,39 +45,39 @@ Using Room (Local Database), all tasks keep until delete the app.
 
 ## Directory Tree 
 
-`└───todo_mvvm
-       ├───adapter
-       │    └─TaskAdapter.kt
-       │
-       ├───data
-       │     ├────db
-       │     │     └─TaskDao.kt
-       │     │     └─TaskDatabase.kt
-       │     │
-       │     ├────entity
-       │     │      └─TaskEntity.kt
-       │     │
-       │     └────repository
-       │            └─TaskRepository.kt
-       │            └─TaskRepositoryImpl.kt
-       │
-       │
-       ├───di
-       │    └─AppModule.kt
-       │    └─ProvideDB.kt
-       │
-       │
-       ├───view
-       │     └─BaseActivity.kt
-       │     └─MainActivity.kt
-       │
-       │
-       ├───viewmodel
-       │     ├────state
-       │     │      └─TaskState.kt
-       │     │
-       │     │
-       │     ├────BaseViewModel.kt 
-       │     └────MainViewModel.kt
-       │
-       └───TodoApplication.kt`
+`└───todo_mvvm  
+       ├───adapter  
+       │    └─TaskAdapter.kt  
+       │  
+       ├───data  
+       │     ├────db  
+       │     │     └─TaskDao.kt  
+       │     │     └─TaskDatabase.kt  
+       │     │  
+       │     ├────entity  
+       │     │      └─TaskEntity.kt  
+       │     │  
+       │     └────repository  
+       │            └─TaskRepository.kt  
+       │            └─TaskRepositoryImpl.kt  
+       │  
+       │  
+       ├───di  
+       │    └─AppModule.kt  
+       │    └─ProvideDB.kt  
+       │  
+       │  
+       ├───view  
+       │     └─BaseActivity.kt  
+       │     └─MainActivity.kt  
+       │  
+       │  
+       ├───viewmodel  
+       │     ├────state  
+       │     │      └─TaskState.kt  
+       │     │  
+       │     │  
+       │     ├────BaseViewModel.kt   
+       │     └────MainViewModel.kt  
+       │  
+       └───TodoApplication.kt`  
