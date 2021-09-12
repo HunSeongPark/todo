@@ -45,7 +45,7 @@ Using Room (Local Database), all tasks keep until delete the app.
 
 ## Directory Tree 
 
-`└───todo_mvvm  
+`└───todo_mvvm<br>
        ├───adapter  
        │    └─TaskAdapter.kt  
        │  
