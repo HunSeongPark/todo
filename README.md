@@ -21,10 +21,10 @@ MVVM
 
 # Details
 * `add`    
-EditText and add button
+EditText and add button  
 
 * `complete`  
-Click task
+Click task  
 
 * `remove`  
 Single task  (Swipe Left)  
@@ -32,17 +32,52 @@ Completed task
 All task  
 
 * `modify`  
-Swipe Right
+Swipe Right  
 
 * `keep task`  
-Using Room (Local Database), all tasks keep until delete the app.
+Using Room (Local Database), all tasks keep until delete the app.  
 
 
 ## Used Libraries
 * Koin
 * Room
-* Coroutine
+* Coroutine  
 
+## Directory Tree 
 
-
-
+`└───todo_mvvm
+       ├───adapter
+       │    └─TaskAdapter.kt
+       │
+       ├───data
+       │     ├────db
+       │     │     └─TaskDao.kt
+       │     │     └─TaskDatabase.kt
+       │     │
+       │     ├────entity
+       │     │      └─TaskEntity.kt
+       │     │
+       │     └────repository
+       │            └─TaskRepository.kt
+       │            └─TaskRepositoryImpl.kt
+       │
+       │
+       ├───di
+       │    └─AppModule.kt
+       │    └─ProvideDB.kt
+       │
+       │
+       ├───view
+       │     └─BaseActivity.kt
+       │     └─MainActivity.kt
+       │
+       │
+       ├───viewmodel
+       │     ├────state
+       │     │      └─TaskState.kt
+       │     │
+       │     │
+       │     ├────BaseViewModel.kt 
+       │     └────MainViewModel.kt
+       │
+       └───TodoApplication.kt`
