@@ -44,7 +44,7 @@ Using Room (Local Database), all tasks keep until delete the app.
 * Coroutine  
 
 ## Directory Tree 
-
+```bash
 └───todo_mvvm   
        ├───adapter   
        │    └─TaskAdapter.kt   
@@ -80,4 +80,5 @@ Using Room (Local Database), all tasks keep until delete the app.
        │     ├────BaseViewModel.kt    
        │     └────MainViewModel.kt   
        │   
-       └───TodoApplication.kt   
+       └───TodoApplication.kt
+       ```
