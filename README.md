@@ -45,7 +45,7 @@ Using Room (Local Database), all tasks keep until delete the app.
 
 ## Directory Tree 
 
-`└───todo_mvvm   
+└───todo_mvvm   
        ├───adapter   
        │    └─TaskAdapter.kt   
        │  
@@ -80,4 +80,4 @@ Using Room (Local Database), all tasks keep until delete the app.
        │     ├────BaseViewModel.kt    
        │     └────MainViewModel.kt   
        │   
-       └───TodoApplication.kt`   
+       └───TodoApplication.kt   
