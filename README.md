@@ -43,6 +43,9 @@ Using Room (Local Database), all tasks keep until delete the app.
 * Room
 * Coroutine  
 
+## UML
+![1todo_uml](https://user-images.githubusercontent.com/71416677/133188567-caa53bdd-201c-4d51-bff5-2a55fd9f3359.jpeg)  
+
 ## Directory Tree 
 ```bash
 └───todo_mvvm   
