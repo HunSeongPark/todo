@@ -1,4 +1,4 @@
-# todo-MVVM
+# todo
 todo app using MVVM pattern.
 
 --------------- `add` ------------------------- `complete` ------------------------ `modify` --------------------- 
