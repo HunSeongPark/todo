@@ -1,5 +1,5 @@
-# kotlin-todo-MVVM
-kotlin todo app using MVVM pattern.
+# todo-MVVM
+todo app using MVVM pattern.
 
 --------------- `add` ------------------------- `complete` ------------------------ `modify` --------------------- 
 <img src="https://user-images.githubusercontent.com/71416677/132951673-93ffef6f-4572-486b-9026-38565aba6a39.gif" width="250" height="400"/>
